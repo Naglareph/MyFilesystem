@@ -9,7 +9,6 @@ namespace fs {
 		std::map<const std::string, const Element*>		m_elements;
 		std::string										m_file_name;
 		mutable std::optional<Size>						m_calculated_size;
-		Element::Element;
 
 		void checkNameAvailibility(const std::string& element_name) {
 			auto itorLb = this->m_elements.lower_bound(element_name);
@@ -26,12 +25,17 @@ namespace fs {
 			}
 		}
 
-	public:
+	protected:
+		Element::Element;
 
-		static Folder& getRoot() {
-			static Folder root{ "R1", nullptr };
-			return root;
+		~Folder() {
+			for (const auto& pair : this->m_elements) {
+				delete pair.second;
+			}
 		}
+
+
+	public:
 
 		class File& createFile(const std::string& file_name, Size file_size) {
 			checkNameAvailibility(file_name);
@@ -50,6 +54,17 @@ namespace fs {
 
 			this->m_elements[folder_name] = folder;
 			return *folder;
+		}
+
+		void deleteElement(const std::string& element_name) {
+			auto itorLb = this->m_elements.lower_bound(element_name);
+			if (itorLb != end(this->m_elements) && !(this->m_elements.key_comp()(element_name, itorLb->first)))
+			{
+				delete itorLb->second;
+				this->m_elements.erase(itorLb);
+			} else {
+				throw std::domain_error(element_name + " not found");
+			}
 		}
 
 		Size	getSize() const override {

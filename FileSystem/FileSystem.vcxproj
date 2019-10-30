@@ -154,6 +154,7 @@
   <ItemGroup>
     <ClCompile Include="element.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="partition.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="element.hpp" />
