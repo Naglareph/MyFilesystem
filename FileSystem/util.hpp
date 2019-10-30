@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <optional>
 #include <functional>
+#include <memory>
 
 namespace fs {
 

@@ -2,16 +2,14 @@
 #include "partition.hpp"
 
 namespace fs {
-	class File& Folder::createFile(const std::string& file_name, Size file_size) {
+	File& Folder::createFile(const std::string& file_name, Size file_size) {
 		checkNameAvailibility(file_name);
-
 		Partition::getInstance().checkRemainingSize(file_size);
 
-		invalidateSize();
 		File* file{ new File(file_name, file_size, this) };
+		this->m_elements[file_name].reset(file);
 
-		this->m_elements[file_name] = file;
-
+		invalidateSize();
 		return *file;
 	}
 
@@ -20,15 +18,14 @@ namespace fs {
 		invalidateSize();
 		Folder* folder{ new Folder(folder_name, this) };
 
-		this->m_elements[folder_name] = folder;
+		this->m_elements[folder_name].reset(folder);
 		return *folder;
 	}
 
-	void Folder::deleteElement(const std::string& element_name) {
+	void	Folder::deleteElement(const std::string& element_name) {
 		auto itorLb = this->m_elements.lower_bound(element_name);
 		if (itorLb != end(this->m_elements) && !(this->m_elements.key_comp()(element_name, itorLb->first)))
 		{
-			delete itorLb->second;
 			this->m_elements.erase(itorLb);
 		}
 		else {
@@ -47,5 +44,4 @@ namespace fs {
 		}
 		return this->m_calculated_size.value();
 	}
-
 }

@@ -22,6 +22,9 @@ namespace fs {
 
 		const Folder* getParent() const { return m_parent; }
 
+		~Element() = default;
+		friend std::default_delete<const Element>;
+
 	public:
 		Size		virtual getSize() const = 0;
 		const std::string	getName() const { return this->name; }
