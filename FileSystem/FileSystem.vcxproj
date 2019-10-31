@@ -164,6 +164,9 @@
     <ClInclude Include="folder.hpp" />
     <ClInclude Include="util.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="\\pc-formateur\partage\bibliographie.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
