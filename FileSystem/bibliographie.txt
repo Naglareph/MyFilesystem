@@ -1,0 +1,12 @@
+Scott Myers
+	Effective C++ / More Effective C++ / Modern C++ (11 / 14)
+
+Andreï Alexandrescu
+	C++ Modern Design 
+
+Dave Abrahams
+	C++ Metaprogramming
+
+Nicolaï Josuttis
+	Librairie standard
+	Templates

@@ -46,7 +46,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="\\pc-formateur\partage\bibliographie.txt">
+    <Text Include="bibliographie.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
   </ItemGroup>
