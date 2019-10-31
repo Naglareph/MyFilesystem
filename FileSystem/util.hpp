@@ -12,8 +12,8 @@ namespace fs {
 	using Size = unsigned;
 	using Capacity = Size;
 
-	inline Size operator"" _bytes(unsigned long long value) { return static_cast<Size>(value); }
-	inline Size operator"" _KBytes(unsigned long long value) { return static_cast<Size>(value * 1000); }
+	inline Size operator"" _bytes(unsigned long long value) noexcept { return static_cast<Size>(value); }
+	inline Size operator"" _KBytes(unsigned long long value) noexcept { return static_cast<Size>(value * 1000); }
 
 	class NonCopyable {
 		NonCopyable(const NonCopyable&) = delete;

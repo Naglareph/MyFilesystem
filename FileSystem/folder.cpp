@@ -33,7 +33,7 @@ namespace fs {
 		}
 	}
 
-	Size	Folder::getSize() const {
+	Size	Folder::getSize() const noexcept {
 		if (!this->m_calculated_size.has_value()) {
 			Size result{};
 			for (const auto& pair : this->m_elements) {

@@ -8,11 +8,11 @@ namespace fs {
 	class File : public Element {
 	private:
 		Size		m_file_size;
-		File(const std::string& name, const Size size, const Folder* parent) : Element{ name, parent }, m_file_size{ size } {}
+		File(const std::string& name, const Size size, const Folder* parent) noexcept(false) : Element{ name, parent }, m_file_size{ size } {}
 
 	public:
 
-		Size		getSize() const override {
+		Size		getSize() const noexcept override {
 			return this->m_file_size;
 		}
 
